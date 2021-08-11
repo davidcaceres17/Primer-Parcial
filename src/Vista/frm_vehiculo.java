@@ -20,6 +20,7 @@ public class frm_vehiculo extends javax.swing.JFrame {
     /**
      * Creates new form frm_vehiculo
      */
+    //declaro los default para las tablas
     DefaultTableModel t_automovil;
     DefaultTableModel t_moto;
     DefaultTableModel t_avion;
@@ -28,28 +29,35 @@ public class frm_vehiculo extends javax.swing.JFrame {
     public frm_vehiculo() {
         initComponents();
         
+        //mensaje de instruccion
         JOptionPane.showMessageDialog(rootPane, "Para agregar un vehiculo debera seleccionar el tipo de vehiculo completo, por lo que el boton agregar no aparecera hasta completar la seleccion","Mensaje",JOptionPane.INFORMATION_MESSAGE);
         
+        //tabla automovil
         t_automovil = new DefaultTableModel();
         String encabezado[]={"Modelo","Tipo moto","color","No. llantas","No. chasis","Tipo luces","Tipo frenos","Tipo escape","No. placa","Carroceria","Marca","Tarjeta circulacion","No. puertas","No. asientos","Vehiculo"};
         t_automovil.setColumnIdentifiers(encabezado);
         tbl_automovil.setModel(t_automovil);
         
+        //table moto
         t_moto = new DefaultTableModel();
         String encabezado2[]={"Modelo","Tipo modelo","color","No. llantas","No. chasis","Tipo luces","Tipo frenos","Tipo escape","No. placa","Marca","Tipo manigueta","Tipo pedales","No. rin","Vehiculo"};
         t_moto.setColumnIdentifiers(encabezado2);
         tbl_moto.setModel(t_moto);
         
+        
+        //tabla avion
         t_avion = new DefaultTableModel();
         String encabezado3[]={"Modelo","Tipo modelo","color","No. llantas","No. chasis","Tipo cola","Tipo fuselaje","Tipo alerones","Tipo estabilizador","Tipo tren aterrizaje","Vehiculo"};
         t_avion.setColumnIdentifiers(encabezado3);
         tbl_avion.setModel(t_avion);
         
+        //tabla helicoptero
         t_helicoptero = new DefaultTableModel();
         String encabezado4[]={"Modelo","Tipo modelo","color","No. llantas","No. chasis","Tipo cola","Tipo fuselaje","Tipo patin cola","Tipo mastil","Tipo patin aterrizaje","Numero elices","Vehiculo"};
         t_helicoptero.setColumnIdentifiers(encabezado4);
         tbl_helicoptero.setModel(t_helicoptero);
         
+        //ocultando los label
         lbl_tipo_luces.setVisible(false); 
         lbl_tipo_frenos.setVisible(false); 
         lbl_tipo_escape.setVisible(false); 
@@ -80,7 +88,7 @@ public class frm_vehiculo extends javax.swing.JFrame {
 
 //-----------------------------------------------------
 
-        
+        //ocultando los input
         txt_tipo_luces.setVisible(false); 
         txt_tipo_frenos.setVisible(false); 
         txt_tipo_escape.setVisible(false); 
@@ -109,6 +117,7 @@ public class frm_vehiculo extends javax.swing.JFrame {
         txt_numero_elices.setVisible(false); 
         
         //==========================
+        //ocultando los combobox
         combo_tipo_vehiculo_terrestre.setVisible(false);
         combo_tipo_vehiculo_aereo.setVisible(false);
         lbl_tipo_vehiculo_terrestre.setVisible(false);
@@ -116,7 +125,7 @@ public class frm_vehiculo extends javax.swing.JFrame {
         
         
         
-        //------BOTON-----
+        //------OCULTANDO EL BOTON-----
         btn_agregar.setVisible(false);
            
     }
@@ -625,8 +634,9 @@ public class frm_vehiculo extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-    
+    //metodo para cultar los label,input,combobox cuando sea neceario
     private void esconder(){
+        //ocultando los label
         lbl_tipo_luces.setVisible(false); 
         lbl_tipo_frenos.setVisible(false); 
         lbl_tipo_escape.setVisible(false); 
@@ -657,7 +667,7 @@ public class frm_vehiculo extends javax.swing.JFrame {
 
 //-----------------------------------------------------
 
-        
+        //ocultando los input
         txt_tipo_luces.setVisible(false); 
         txt_tipo_frenos.setVisible(false); 
         txt_tipo_escape.setVisible(false); 
@@ -686,6 +696,7 @@ public class frm_vehiculo extends javax.swing.JFrame {
         txt_numero_elices.setVisible(false); 
         
         //==========================
+        //ocultando los combobox
         combo_tipo_vehiculo_terrestre.setVisible(false);
         combo_tipo_vehiculo_aereo.setVisible(false);
         lbl_tipo_vehiculo_terrestre.setVisible(false);
@@ -693,10 +704,11 @@ public class frm_vehiculo extends javax.swing.JFrame {
         
         
         
-        //------BOTON-----
+        //------ocultando el BOTON-----
         btn_agregar.setVisible(false);
     }
     
+    //metodo para limpiar todos los datos ingresados
     private void limpiar(){
         txt_modelo.setText("");
         txt_tipo_motor.setText("");
@@ -734,7 +746,7 @@ public class frm_vehiculo extends javax.swing.JFrame {
         // TODO add your handling code here:
 
         String opcion = (String) combo_tipo_vehiculo.getSelectedItem();
-        
+        //mostrando los datos necesarios seleccionados
         if(opcion.equals("Vehiculo-terrestre")){
             lbl_tipo_luces.setVisible(true); 
             lbl_tipo_frenos.setVisible(true); 
@@ -746,13 +758,16 @@ public class frm_vehiculo extends javax.swing.JFrame {
             txt_tipo_escape.setVisible(true); 
             txt_numero_placa.setVisible(true); 
             
+            //ocultando el combobox inecesarios 
             combo_tipo_vehiculo_aereo.setVisible(false);
             lbl_tipo_vehiculo_aereo.setVisible(false);
+            //mostrando el combobox necesario
             combo_tipo_vehiculo_terrestre.setVisible(true);
             lbl_tipo_vehiculo_terrestre.setVisible(true);
             
             
             //------------------------------
+            //ocultando los datos incesarios para la seleccion
             lbl_tipo_cola.setVisible(false); 
             lbl_tipo_fuselaje.setVisible(false); 
 
@@ -802,19 +817,23 @@ public class frm_vehiculo extends javax.swing.JFrame {
             lbl_numero_elices.setVisible(false); 
         }else{
             if(opcion.equals("Vehiculo-aereo")){
+                //mostrando los daots necesarios para la seleccion
                 lbl_tipo_cola.setVisible(true); 
                 lbl_tipo_fuselaje.setVisible(true); 
 
                 txt_tipo_cola.setVisible(true); 
                 txt_tipo_fuselaje.setVisible(true); 
                 
+                //combobox necesario mostrado
                 combo_tipo_vehiculo_aereo.setVisible(true);
                 lbl_tipo_vehiculo_aereo.setVisible(true);
+                //combobox inecesario oculto
                 combo_tipo_vehiculo_terrestre.setVisible(false);
                 lbl_tipo_vehiculo_terrestre.setVisible(false);
                 
                 
                 //-----------------------------------
+                //datos inecesarios ocultos
                 lbl_tipo_luces.setVisible(false); 
                 lbl_tipo_frenos.setVisible(false); 
                 lbl_tipo_escape.setVisible(false); 
@@ -878,6 +897,7 @@ public class frm_vehiculo extends javax.swing.JFrame {
         String opcion2 = (String) combo_tipo_vehiculo_terrestre.getSelectedItem();
         
         if(opcion2.equals("Automovil")){
+            //mostrando los datos necesarios para la seleccion
             lbl_carroceria.setVisible(true); 
             lbl_marca.setVisible(true); 
             lbl_tarjeta_circulacion.setVisible(true); 
@@ -890,12 +910,12 @@ public class frm_vehiculo extends javax.swing.JFrame {
             txt_tarjeta_circulacion.setVisible(true); 
             txt_numero_puertas.setVisible(true); 
             txt_numero_asientos.setVisible(true);
-   
+            //mostrando el boton agregar 
             btn_agregar.setVisible(true);
             
             //-----------------------
             //-----------------------
-            
+            //ocultando los datos incesarios para la seleccion
             lbl_marca2.setVisible(false); 
             lbl_tipo_manigueta.setVisible(false); 
             lbl_tipo_pedales.setVisible(false); 
@@ -907,10 +927,11 @@ public class frm_vehiculo extends javax.swing.JFrame {
             txt_tipo_manigueta.setVisible(false); 
             txt_tipo_pedales.setVisible(false); 
             txt_numero_rin.setVisible(false);
-            
+            //variable que define el tipo de vehiculo
             entrada = 1;
         }else{
             if(opcion2.equals("Moto")){
+                //mostrando los datos necesarios para la seleccion
                 lbl_marca2.setVisible(true); 
                 lbl_tipo_manigueta.setVisible(true); 
                 lbl_tipo_pedales.setVisible(true); 
@@ -922,12 +943,12 @@ public class frm_vehiculo extends javax.swing.JFrame {
                 txt_tipo_manigueta.setVisible(true); 
                 txt_tipo_pedales.setVisible(true); 
                 txt_numero_rin.setVisible(true);
-                
+                //mostrando el boton e agregar
                 btn_agregar.setVisible(true);
 
                 //------------------
                 //------------------
-                
+                //ocultando los datos incesarios para la seleccion
                 lbl_carroceria.setVisible(false); 
                 lbl_marca.setVisible(false); 
                 lbl_tarjeta_circulacion.setVisible(false); 
@@ -941,6 +962,7 @@ public class frm_vehiculo extends javax.swing.JFrame {
                 txt_numero_puertas.setVisible(false); 
                 txt_numero_asientos.setVisible(false);
                 
+                //variable para detemrinar tipo de vehiculo
                 entrada = 2;
             }
         }
@@ -948,9 +970,11 @@ public class frm_vehiculo extends javax.swing.JFrame {
 
     private void combo_tipo_vehiculo_aereoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_combo_tipo_vehiculo_aereoActionPerformed
         // TODO add your handling code here:
+        //variables para determinar que item selecciono
         String opcion2 = (String) combo_tipo_vehiculo_aereo.getSelectedItem();
         
         if(opcion2.equals("Avion")){
+            //mostrando los datos necesarios para la seleccion
             lbl_tipo_alerones.setVisible(true); 
             lbl_tipo_estabilizador.setVisible(true); 
             lbl_tipo_tren_aterrizaje.setVisible(true); 
@@ -959,12 +983,12 @@ public class frm_vehiculo extends javax.swing.JFrame {
             txt_tipo_alerones.setVisible(true); 
             txt_tipo_estabilizador.setVisible(true); 
             txt_tipo_tren_aterrizaje.setVisible(true); 
-            
+            //mostrando el boton agregar
             btn_agregar.setVisible(true);
  
             //-----------------------
             //-----------------------
-            
+            //oculando los datos inecesarios para la seleccion
             lbl_tipo_patin_cola.setVisible(false); 
             lbl_tipo_mastil.setVisible(false); 
             lbl_tipo_patin_aterrizaje.setVisible(false); 
@@ -975,10 +999,11 @@ public class frm_vehiculo extends javax.swing.JFrame {
             txt_tipo_patin_cola.setVisible(false); 
             txt_tipo_patin_aterrizaje.setVisible(false); 
             txt_numero_elices.setVisible(false); 
-            
+            //variable para detemrinar tipo de vehiculo
             entrada = 3;
         }else{
             if(opcion2.equals("Helicoptero")){
+                //mostrando los datos necesarios para la seleccion
                 lbl_tipo_patin_cola.setVisible(true); 
                 lbl_tipo_mastil.setVisible(true); 
                 lbl_tipo_patin_aterrizaje.setVisible(true); 
@@ -990,12 +1015,12 @@ public class frm_vehiculo extends javax.swing.JFrame {
                 txt_tipo_mastil.setVisible(true); 
                 txt_tipo_patin_aterrizaje.setVisible(true); 
                 txt_numero_elices.setVisible(true); 
-                
+                //mostrando el boton agregar
                 btn_agregar.setVisible(true);
 
                 //------------------
                 //------------------
-                
+                //ocultando los datos incesarios para la seleccion
                 lbl_tipo_alerones.setVisible(false); 
                 lbl_tipo_estabilizador.setVisible(false); 
                 lbl_tipo_tren_aterrizaje.setVisible(false); 
@@ -1004,7 +1029,7 @@ public class frm_vehiculo extends javax.swing.JFrame {
                 txt_tipo_alerones.setVisible(false); 
                 txt_tipo_estabilizador.setVisible(false); 
                 txt_tipo_tren_aterrizaje.setVisible(false); 
-                
+                //variable para detemrinar tipo de vehiculo
                 entrada = 4;
             }
         }
@@ -1012,8 +1037,9 @@ public class frm_vehiculo extends javax.swing.JFrame {
 
     private void btn_agregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_agregarActionPerformed
         // TODO add your handling code here:
-         
+         //condiciones para determinar tipo de vehiculo ingresado
         if(entrada == 1){
+            //mostrando los valores para automovil
             String datos[] = new String[15];
             datos[0] = txt_modelo.getText();
             datos[1] = txt_tipo_motor.getText();
@@ -1034,6 +1060,7 @@ public class frm_vehiculo extends javax.swing.JFrame {
            JOptionPane.showMessageDialog(rootPane, "Ingreso Correcto, Los datos se muestran en la pestaña AUTOMOVIL","Mensaje",JOptionPane.INFORMATION_MESSAGE);
         }else{
             if(entrada == 2){
+                //mostrando los valores para moto
                 String datos2[] = new String[14];
                 datos2[0] = txt_modelo.getText();
                 datos2[1] = txt_tipo_motor.getText();
@@ -1053,7 +1080,7 @@ public class frm_vehiculo extends javax.swing.JFrame {
                JOptionPane.showMessageDialog(rootPane, "Ingreso Correcto, Los datos se muestran en la pestaña MOTO","Mensaje",JOptionPane.INFORMATION_MESSAGE);
             }else{
                 if(entrada == 3){
-                    
+                    //mostrando los valores para avion
                     String datos2[] = new String[11];    
                     datos2[0] = txt_modelo.getText();
                     datos2[1] = txt_tipo_motor.getText();
@@ -1069,6 +1096,7 @@ public class frm_vehiculo extends javax.swing.JFrame {
                     t_avion.addRow(datos2);
                     JOptionPane.showMessageDialog(rootPane, "Ingreso Correcto, Los datos se muestran en la pestaña AVION","Mensaje",JOptionPane.INFORMATION_MESSAGE);
                 }else{
+                    //mostrando los valores para helicoptero
                     String datos2[] = new String[12];    
                     datos2[0] = txt_modelo.getText();
                     datos2[1] = txt_tipo_motor.getText();
@@ -1087,8 +1115,8 @@ public class frm_vehiculo extends javax.swing.JFrame {
                 }
             }
         }
-        limpiar();
-        esconder();
+        limpiar();//llamando al metodo limpiar
+        esconder();//llamando al metodo esconder
     }//GEN-LAST:event_btn_agregarActionPerformed
 
     /**
